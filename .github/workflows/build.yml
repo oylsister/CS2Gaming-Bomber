@@ -8,6 +8,8 @@ on:
 
 jobs:
   build:
+    permissions:
+      contents: write
 
     runs-on: ubuntu-latest
 
@@ -70,8 +72,6 @@ jobs:
         zip -r "Bomber_${{ env.FILE_VER }}.zip" Bomber
 
     - name: Create GitHub Release
-      permissions:
-        contents: write
       uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ env.TAG }}
